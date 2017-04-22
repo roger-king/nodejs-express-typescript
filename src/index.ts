@@ -43,8 +43,7 @@ class Server {
             bodyParser.urlencoded({
                 extended: false
             }),
-            bodyParser.json(),
-            express.static(path.join(__dirname, 'public'))
+            bodyParser.json()
         )
     }
 
@@ -61,6 +60,7 @@ class Server {
     }
 
     public start(){
+        debug('public', public_dir);
         this.app
             .listen(this.port)
             .on('listening', () => {

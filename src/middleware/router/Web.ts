@@ -1,5 +1,8 @@
+import * as Debug from "debug";
 import * as express from "express";
 import * as fs from "fs";
+import * as path from "path";
+const debug = Debug("Web-Router:");
 
 export class Web{
     private router: express.Router;
@@ -9,19 +12,19 @@ export class Web{
     }
 
     private send(req: express.Request, res: express.Response){
+        debug('Path', path.resolve(__dirname));
         if(fs.existsSync('index.html')){
             res.status(200)
-                .sendFile('index.html');
+                .sendfile('index.html', {"root": "./public/www/"});
         }else{
             // We send an error page for UX friendly.
             res.status(404)
-                .sendFile('error.html');
+                .sendFile("error.html", {"root": "./public/www/"});
         }
     }
 
     initilize(): express.Router{
         this.router.use(express.static('public'));
-        this.router.use(express.static('public/www'));
 
         this.router.get('/*', this.send);
 
