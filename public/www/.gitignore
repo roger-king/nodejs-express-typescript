@@ -1,0 +1,5 @@
+# The Frontend should be bundled and placed into this directory.
+
+*
+!error.html
+!.gitignore
