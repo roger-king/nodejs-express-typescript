@@ -1,24 +1,69 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <title>NodeJS | Oops... :( </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+
     <style>
-        html, body{
+        html,
+        body {
+            /* Set rules to fill background */
+            min-height: 100%;
+            min-width: 1024px;
+            /* Set up proportionate scaling */
+            width: 100%;
+            height: auto;
+            /* Set up positioning */
+            position: fixed;
             margin: 0 auto;
-            background: rgba(224,224,224 ,0.7);
         }
 
-        .fourofour{
-            font-size: 7em;
+        #container{
+            display: block;
+            text-align: center;
+            margin-top: 200px;
+            height: 500px;
+            width: 100%;
+        }
+
+        .errortitle {
+            display: block;
+            font-size: 5em;
+            font-family: 'Josefin Sans', sans-serif;
             color: black;
+        }
+
+        #errorImage{
+            width: 300px;
+        }
+        
+        .errorCaption{
+            display: block;
+            font-size: 3em;
+            font-family: 'Josefin Sans', sans-serif;
         }
     </style>
 </head>
 
 <body>
-    <span class="fourofour"> 404 </span>
-    <h1> Sorry! </h1>
-    <h2 class="oops"> Oops, We have encountered an error.</h2>
+    <div id="container">
+        <span class="errortitle"> Oops </span>
+        <img id="errorImage" />
+        <span class="errorCaption"> Something went wrong. </span>
+    </div>
+
+    <script>
+        var imgUrl = window.location.href + 'media/images/tired_pug.jpg';
+        var image = document.getElementById("errorImage")
+        document.getElementById("errorImage").src = imgUrl;
+    </script>
 </body>
 
 </html>
