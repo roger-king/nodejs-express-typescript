@@ -21,4 +21,4 @@ npm run prod:compile
 
 # TODO:
 - [x] Example unit test with Jest
-- [] Proper tslint.json
+- [ ] Proper tslint.json
