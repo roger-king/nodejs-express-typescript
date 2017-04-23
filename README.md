@@ -10,25 +10,26 @@ This is a bare bones setup with an example "Revision" api endpoint.
 .
 └── config
 |   └── default.json #development configuration
-|   └──test.json -> test configuration
+|   └──test.json #test configuration
 └── public
-|   └── media -> public media (images, fonts, videos, etc...)
-|   |   └── images -> public images
-|   |   └── www -> web frontend directory
-└── src -> main source code.
+|   └── media #public media (images, fonts, videos, etc...)
+|   |   └── images #public images
+|   |   └── www #web frontend directory
+└── src #main source code.
 |   └── middleware
 |   |   └── router
-|   |   |   └── index.ts -> Used to bootstrap and import API urls
-|   |   |   └── Web.ts -> Router to setup to serve static assets
-|   └── modules -> source code modules
-|   |   └── mod -> module name
-|   |   |   └── index.ts -> entry point for the module ( I use this as the file to contain the API entry).
-|   |   |   └── mod.tests.ts -> test cases
-|   |   |   └── mod.model.ts -> module model class
-|   |   |   └── mod.controller.ts -> module controller class
-|   |   |   └── *mod.schema.ts -> module schema class
-|   └── index.ts -> server class (entry point for whole application)
-└── gulpfile.js -> automated tasks (gulp)
+|   |   |   └── index.ts #Used to bootstrap and import API urls
+|   |   |   └── Web.ts #Router to setup to serve static assets
+|   └── modules #source code modules
+|   |   └── index.ts #entry point for modules. import/export all modules APIs here.
+|   |   └── mod #module name
+|   |   |   └── index.ts #entry point for the module ( I use this as the file to contain the API entry).
+|   |   |   └── mod.tests.ts #test cases
+|   |   |   └── mod.model.ts #module model class
+|   |   |   └── mod.controller.ts #module controller class
+|   |   |   └── *mod.schema.ts #module schema class
+|   └── index.ts #server class (entry point for whole application)
+└── gulpfile.js #automated tasks (gulp)
 └── package.json
 └── tsconfig.json
 └── tslint.json
