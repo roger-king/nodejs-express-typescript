@@ -14,7 +14,9 @@ This is a bare bones setup with an example "Revision" api endpoint.
 └── public
 |   └── media #public media (images, fonts, videos, etc...)
 |   |   └── images #public images
+|   |       └── error.jpg #replace with your own
 |   |   └── www #web frontend directory
+|   |       └── error.html #replace with your own
 └── src #main source code.
 |   └── middleware
 |   |   └── router
