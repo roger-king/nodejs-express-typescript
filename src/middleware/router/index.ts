@@ -1,6 +1,6 @@
 import {Router} from "express";
 import {Web} from "./Web";
-import {Revision} from "../../modules";
+import {Revision, User} from "../../modules";
 
 export class IndexRouter{
     private router: Router;
@@ -9,8 +9,12 @@ export class IndexRouter{
     }
 
     public boostrap(): Router{
+        this.router.use('/api', 
+            new Revision(this.router).initialize(), 
+            new User(this.router).initialize()
+        );
+
         this.router.use('/', new Web(this.router).initilize());
-        this.router.use('/api', new Revision(this.router).initialize());
 
         return this.router;
     }

@@ -7,6 +7,7 @@ import * as express from 'express';
 import * as helmet from 'helmet';
 import * as morgan from 'morgan';
 import * as path from 'path';
+import {Connection, createConnection} from 'mongoose';
 import {IndexRouter} from './middleware/router';
 const debug = Debug('Server:');
 
@@ -58,8 +59,10 @@ class Server {
     }
 
     private config(): void{
-
+        const MongoConnectionString: string = String(config.get('database.mongo.host'));
         this.port = Number(config.get('port'));
+
+        const connection: Connection = createConnection(MongoConnectionString);
     }
 
     private router(): void{
