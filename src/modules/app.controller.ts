@@ -4,7 +4,7 @@ import { Get, Controller } from '@nestjs/common';
 export class AppController {
 
     @Get('/test')
-    root(): string {
-        return 'hello world';
+    private root(): Object {
+        return {'test': 'hello'};
     }
 }
