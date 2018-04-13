@@ -4,7 +4,7 @@
   "description": "NodeJS and express (typed) project seed",
   "main": "index.js",
   "scripts": {
-    "dev": "DEBUG=* nodemon --exec ./node_modules/.bin/ts-node -- ./src/index.ts",
+    "start:dev": "DEBUG=* nodemon --exec ./node_modules/.bin/ts-node -- ./src/server.ts",
     "start": "DEBUG=* node dist/",
     "prod:run": "export NODE_ENV=production pm2 start dist",
     "prod:compile": "gulp",

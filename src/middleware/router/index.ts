@@ -1,17 +1,16 @@
-import {Router} from "express";
-import {Web} from "./Web";
-import {Revision} from "../../modules";
+import { Router } from "express";
+import { RevisionApi } from "./../../modules";
+import { config } from "./../../utilities/config";
+import { asyncMiddleware } from "./../asyncMiddleware";
+import { Web } from "./Web";
 
-export class IndexRouter{
-    private router: Router;
-    constructor(BaseRouter: Router){
-        this.router = BaseRouter;
-    }
+export const router: Router = Router();
 
-    public boostrap(): Router{
-        this.router.use('/', new Web(this.router).initilize());
-        this.router.use('/api', new Revision(this.router).initialize());
+router.use("/healthCheck", (req: IRequest, res: IResponse) => {
+  res.status(200)
+    .send({version: config.VERSION, status: "OK"});
+});
 
-        return this.router;
-    }
-}
+router.use("/api", new RevisionApi(this.router).initialize());
+
+router.use("/", new Web(this.router).initilize());

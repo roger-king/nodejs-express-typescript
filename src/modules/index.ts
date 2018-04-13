@@ -1,1 +1,1 @@
-export {API as Revision} from './revision';
+export { RevisionApi } from "./revision";
