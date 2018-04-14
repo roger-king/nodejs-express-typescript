@@ -1,25 +1,25 @@
-import * as bodyParser from "body-parser";
-import * as compression from "compression";
-import * as cors from "cors";
-import * as Debug from "debug";
-import * as dotenv from "dotenv";
-import * as express from "express";
-import * as helmet from "helmet";
-import * as morgan from "morgan";
-import * as path from "path";
-import { router } from "./middleware/router";
+import * as bodyParser from 'body-parser';
+import * as compression from 'compression';
+import * as cors from 'cors';
+import * as Debug from 'debug';
+import * as dotenv from 'dotenv';
+import * as express from 'express';
+import * as helmet from 'helmet';
+import * as morgan from 'morgan';
+import * as path from 'path';
+import { router } from './middleware/router';
 
-const debug = Debug("gateway");
-const result = dotenv.config({path: path.resolve(process.cwd(), ".env")});
+const debug = Debug('gateway');
+const result = dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 
 export const app = express();
 
-app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(
-    morgan("dev"),
+    morgan('dev'),
     helmet.frameguard({
-        action: "deny",
+        action: 'deny',
     }),
     helmet.xssFilter({
         setOnOldIE: false,

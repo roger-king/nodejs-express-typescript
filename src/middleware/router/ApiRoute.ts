@@ -1,4 +1,4 @@
-import {NextFunction, Request, Response, Router } from "express";
+import { NextFunction, Request, Response, Router } from 'express';
 
 export abstract class ApiRoute {
     public router: Router;
@@ -12,5 +12,4 @@ export abstract class ApiRoute {
     public initialize(): Router {
         return this.router;
     }
-
 }

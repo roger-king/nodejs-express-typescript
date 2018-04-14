@@ -5,9 +5,7 @@ declare global {
         cookies: { [k: string]: any };
     }
 
-    interface IResponse extends express.Response {
-
-    }
+    interface IResponse extends express.Response {}
 
     type INext = (err?: Error) => void;
 }
