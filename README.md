@@ -44,11 +44,12 @@ Main point here is that I keep everything in one place for the modules. It makes
 
 ## Development:
 
-```
-git clone https://github.com/roger-king/nodejs-express-typescript.git api
-cd api
+```bash
+git clone https://github.com/roger-king/nodejs-express-typescript.git [project name]
+cd [project name]
+node setup.js
 yarn install
-npm run dev
+npm run start:dev
 ```
 
 ## Production:
