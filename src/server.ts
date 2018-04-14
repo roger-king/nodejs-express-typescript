@@ -1,13 +1,26 @@
+import * as http from 'http';
+import * as https from 'https';
 import { app } from './app';
-import { config } from './utilities/config';
+import { config, isLocal } from './utilities/config';
+import { logger } from './utilities/logger';
 
 const port = config.PORT;
+// option for https server
+let server: https.Server | http.Server;
 
-app.listen(port);
-app.on('error', onError);
-app.on('listening', () => {
-    // tslint:disable-next-line
-    console.log(`Application is now running on http://localhost:${port}`);
+server = http.createServer();
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', () => {
+    const msg = `Application is now running on http://localhost:${port}`;
+
+    if (!isLocal) {
+        // tslint:disable-next-line
+        console.log(msg);
+    }
+
+    logger('server').debug(msg);
 });
 
 /**
@@ -23,13 +36,11 @@ function onError(error: NodeJS.ErrnoException) {
     // handle specific listen errors with friendly messages
     switch (error.code) {
         case 'EACCES':
-            // tslint:disable-next-line
-            console.error(bind + ' requires elevated privileges');
+            logger().error(bind + ' requires elevated privileges');
             process.exit(1);
             break;
         case 'EADDRINUSE':
-            // tslint:disable-next-line
-            console.error(bind + ' is already in use');
+            logger().error(bind + ' is already in use');
             process.exit(1);
             break;
         default:
@@ -39,15 +50,12 @@ function onError(error: NodeJS.ErrnoException) {
 
 process.on('unhandledRejection', e => {
     if (e.fatal) {
-        // tslint:disable-next-line
-        console.error(e);
+        logger().error(e);
         process.exit(1);
     }
     // Todo: Look back into how/why this is being unhandled.
     if (e.statusCode !== 304) {
-        // tslint:disable-next-line
-        console.log('!!UNHANDLED:');
-        // tslint:disable-next-line
-        console.error(e);
+        logger('server').debug('!!UNHANDLED:');
+        logger().error(e);
     }
 });

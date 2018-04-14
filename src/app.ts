@@ -1,18 +1,21 @@
 import * as bodyParser from 'body-parser';
 import * as compression from 'compression';
 import * as cors from 'cors';
-import * as Debug from 'debug';
 import * as dotenv from 'dotenv';
 import * as express from 'express';
 import * as helmet from 'helmet';
 import * as morgan from 'morgan';
 import * as path from 'path';
 import { router } from './middleware/router';
+import { config } from './utilities/config';
+import { logger } from './utilities/logger';
 
-const debug = Debug('gateway');
+const debug = logger().debug('gateway');
 const result = dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 
 export const app = express();
+
+app.set('port', config.PORT);
 
 app.use(express.static(path.join(__dirname, '../public')));
 
