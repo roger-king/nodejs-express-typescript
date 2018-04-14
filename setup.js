@@ -13,7 +13,7 @@ const rewritePackageJson = async () => {
         process.exit(1);
     }
 
-    const name = stdout;
+    const name = stdout.trim();
 
     fs.readFile('./package.json', 'utf8', (err, data) => {
         if (err) {
