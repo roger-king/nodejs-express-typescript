@@ -1,5 +1,4 @@
-import * as Debug from 'debug';
-const debug = Debug('server: config');
+import { logger } from './logger';
 
 const requiredEnvVars: string[] = ['VERSION', 'PORT'];
 
@@ -13,7 +12,7 @@ const isRequired = (variables: string[]): void => {
     });
 
     if (missingEnvVars.length) {
-        debug(`The following environment variables are required: ${missingEnvVars.join(', ')}`);
+        logger().error(`The following environment variables are required: ${missingEnvVars.join(', ')}`);
         process.exit(1);
     }
 };

@@ -1,8 +1,6 @@
-import * as Debug from 'debug';
 import { NextFunction, Request, Response, Router } from 'express';
 import { ApiRoute } from './../../middleware/router/ApiRoute';
 import { Revision } from './Revision';
-const debug = Debug('Revision-API:');
 
 export class RevisionApi extends ApiRoute {
     constructor(BaseRouter: Router) {

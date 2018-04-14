@@ -8,9 +8,7 @@ import * as morgan from 'morgan';
 import * as path from 'path';
 import { router } from './middleware/router';
 import { config } from './utilities/config';
-import { logger } from './utilities/logger';
 
-const debug = logger().debug('gateway');
 const result = dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 
 export const app = express();

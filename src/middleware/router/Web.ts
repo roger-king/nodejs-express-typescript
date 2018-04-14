@@ -1,8 +1,7 @@
-import * as Debug from 'debug';
 import * as express from 'express';
 import * as fs from 'fs';
 import * as path from 'path';
-const debug = Debug('Web-Router:');
+import { logger } from './../../utilities/logger';
 
 export class Web {
     private router: express.Router;
@@ -20,7 +19,6 @@ export class Web {
     }
 
     private send(req: express.Request, res: express.Response) {
-        debug('Path', path.resolve(__dirname));
         if (fs.existsSync('index.html')) {
             res.status(200).sendfile('index.html', { root: './public/www/' });
         } else {
