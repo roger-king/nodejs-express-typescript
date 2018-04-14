@@ -1,11 +1,13 @@
 # Node.JS, Express, and Typescript
 
 ## About:
+
 Typescript Node.js and express API project seed...
 
 This is a bare bones setup with an example "Revision" api endpoint.
 
 ## Project Structure
+
 ```
 .
 └── config
@@ -41,6 +43,7 @@ This is a bare bones setup with an example "Revision" api endpoint.
 Main point here is that I keep everything in one place for the modules. It makes it easier for importing.
 
 ## Development:
+
 ```
 git clone https://github.com/roger-king/nodejs-express-typescript.git api
 cd api
@@ -53,8 +56,3 @@ npm run dev
 ```
 npm run prod:compile
 ```
-
-# TODO:
-- [x] Example unit test with Jest
-- [ ] Proper tslint.json
-- [ ] Bootstrap routes
