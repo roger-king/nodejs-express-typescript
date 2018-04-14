@@ -35,6 +35,8 @@ const createReadeMe = async () => {
 const gitInit = async () => {
     await exec('rm -rf .git');
     await exec('git init');
+    await exec('git add .');
+    await exec('git commit -m "Initial commit"');
 };
 
 const setup = () => {
@@ -42,6 +44,9 @@ const setup = () => {
     createReadeMe();
     gitInit();
 
+    console.log(
+        'Finished setting up project. Happy coding! (Files have already been committed. Add your repo and push with initial commit!)',
+    );
     // Clean Up Setup file :)
     exec('rm setup.js');
 };
