@@ -2,7 +2,7 @@
 
 ## About:
 
-Typescript Node.js and express API project seed...
+Typescript Node.js, inversify, and express API/GraphQL project seed...
 
 This is a bare bones setup with an example "Revision" api endpoint.
 
@@ -57,3 +57,7 @@ npm run start:dev
 ```
 npm run prod:compile
 ```
+
+# Documentaion:
+
+*   [SOLID principles](https://dev.to/remojansen/implementing-the-onion-architecture-in-nodejs-with-typescript-and-inversifyjs-10ad)

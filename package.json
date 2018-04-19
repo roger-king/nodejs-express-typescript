@@ -65,6 +65,7 @@
         "https": "^1.0.0",
         "inversify": "^4.13.0",
         "inversify-express-utils": "^6.0.0",
-        "morgan": "^1.9.0"
+        "morgan": "^1.9.0",
+        "reflect-metadata": "^0.1.12"
     }
 }

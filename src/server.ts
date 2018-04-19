@@ -1,6 +1,7 @@
 import * as http from 'http';
 import * as https from 'https';
-import { app } from './app';
+import 'reflect-metadata';
+import { expressApplication } from './app';
 import { config, isLocal } from './utilities/config';
 import { logger } from './utilities/logger';
 
@@ -8,7 +9,7 @@ const port = config.PORT;
 // option for https server
 let server: https.Server | http.Server;
 
-server = http.createServer();
+server = http.createServer(expressApplication);
 
 server.listen(port);
 server.on('error', onError);
