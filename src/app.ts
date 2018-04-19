@@ -14,35 +14,39 @@ import { router } from './middleware/router';
 import { config } from './utilities';
 
 dotenv.config({ path: path.resolve(process.cwd(), '.env') });
-const container = new Container();
-const app = new InversifyExpressServer(container);
 
-app.setConfig(middleware => {
-    middleware.set('port', config.PORT);
+export const bootstrapApplication = async (): Promise<express.Application> => {
+    const container = new Container();
+    await container.loadAsync(bindings);
+    const app = new InversifyExpressServer(container);
 
-    middleware.use(express.static(path.join(__dirname, '../public')));
+    app.setConfig(middleware => {
+        middleware.set('port', config.PORT);
 
-    middleware.use(
-        morgan('dev'),
-        helmet.frameguard({
-            action: 'deny',
-        }),
-        helmet.xssFilter({
-            setOnOldIE: false,
-        }),
-        helmet.hsts({
-            includeSubdomains: true, // Must be enabled to be approved by Google
-            maxAge: 10886400000, // Must be at least 18 weeks to be approved by Google
-            preload: true,
-        }),
-        helmet.hidePoweredBy(),
-        cors(),
-        compression(),
-        bodyParser.urlencoded({
-            extended: false,
-        }),
-        bodyParser.json(),
-    );
-});
+        middleware.use(express.static(path.join(__dirname, '../public')));
 
-export const expressApplication: express.Application = app.build();
+        middleware.use(
+            morgan('dev'),
+            helmet.frameguard({
+                action: 'deny',
+            }),
+            helmet.xssFilter({
+                setOnOldIE: false,
+            }),
+            helmet.hsts({
+                includeSubdomains: true, // Must be enabled to be approved by Google
+                maxAge: 10886400000, // Must be at least 18 weeks to be approved by Google
+                preload: true,
+            }),
+            helmet.hidePoweredBy(),
+            cors(),
+            compression(),
+            bodyParser.urlencoded({
+                extended: false,
+            }),
+            bodyParser.json(),
+        );
+    });
+
+    return app.build();
+};
