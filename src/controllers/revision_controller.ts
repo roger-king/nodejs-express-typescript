@@ -2,7 +2,7 @@ import { controller, httpGet, httpPost, requestBody } from 'inversify-express-ut
 import { config } from './../utilities';
 
 @controller('/api/v1')
-export class MovieController {
+export class RevisionController {
     @httpGet('/')
     public async get() {
         return { version: config.VERSION, status: 'OK' };
