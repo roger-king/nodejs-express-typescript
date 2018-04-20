@@ -22,7 +22,7 @@ import { logger } from './utilities/logger';
             console.log(msg);
         }
 
-        logger('server').debug(msg);
+        logger.info(msg);
     });
 
     /**
@@ -38,11 +38,11 @@ import { logger } from './utilities/logger';
         // handle specific listen errors with friendly messages
         switch (error.code) {
             case 'EACCES':
-                logger().error(bind + ' requires elevated privileges');
+                logger.error(bind + ' requires elevated privileges');
                 process.exit(1);
                 break;
             case 'EADDRINUSE':
-                logger().error(bind + ' is already in use');
+                logger.error(bind + ' is already in use');
                 process.exit(1);
                 break;
             default:
@@ -52,13 +52,13 @@ import { logger } from './utilities/logger';
 
     process.on('unhandledRejection', e => {
         if (e.fatal) {
-            logger().error(e);
+            logger.error(e);
             process.exit(1);
         }
         // Todo: Look back into how/why this is being unhandled.
         if (e.statusCode !== 304) {
-            logger('server').debug('!!UNHANDLED:');
-            logger().error(e);
+            logger.debug('!!UNHANDLED:');
+            logger.error(e);
         }
     });
 })();

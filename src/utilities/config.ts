@@ -12,7 +12,7 @@ const isRequired = (variables: string[]): void => {
     });
 
     if (missingEnvVars.length) {
-        logger().error(`The following environment variables are required: ${missingEnvVars.join(', ')}`);
+        logger.error(`The following environment variables are required: ${missingEnvVars.join(', ')}`);
         process.exit(1);
     }
 };
@@ -21,6 +21,7 @@ const setupConfig = () => {
     const appConfig = {
         PORT: isLocal ? 4000 : process.env.PORT,
         VERSION: isLocal ? 'local' : process.env.VERSION,
+        LOG_LEVEL: isLocal ? 'debug' : process.env.LOG_LEVEL,
     };
 
     requiredEnvVars.forEach(variable => {

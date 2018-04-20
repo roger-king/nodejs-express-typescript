@@ -11,7 +11,7 @@ export class WebController {
         if (fs.existsSync(path.join(webAppPath(), 'index.html'))) {
             res.render('index');
         } else {
-            logger('web').debug('index web view could not be found');
+            logger.info('index web view could not be found');
             res.render('error');
         }
     }
