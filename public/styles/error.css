@@ -1,0 +1,37 @@
+html,
+body {
+    /* Set rules to fill background */
+    min-height: 100%;
+    min-width: 1024px;
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+    /* Set up positioning */
+    position: fixed;
+    margin: 0 auto;
+}
+
+#container {
+    display: block;
+    text-align: center;
+    margin-top: 200px;
+    height: 500px;
+    width: 100%;
+}
+
+.errortitle {
+    display: block;
+    font-size: 5em;
+    font-family: 'Josefin Sans', sans-serif;
+    color: black;
+}
+
+#errorImage {
+    width: 300px;
+}
+
+.errorCaption {
+    display: block;
+    font-size: 3em;
+    font-family: 'Josefin Sans', sans-serif;
+}

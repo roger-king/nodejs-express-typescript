@@ -6,5 +6,5 @@ const publicPath = (): string => {
 };
 
 export const webAppPath = () => {
-    return path.join(publicPath(), 'www');
+    return path.join(publicPath(), 'www/');
 };

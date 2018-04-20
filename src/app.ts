@@ -9,7 +9,7 @@ import { InversifyExpressServer } from 'inversify-express-utils';
 import * as morgan from 'morgan';
 import * as path from 'path';
 import { bindings } from './inversify.config';
-import { config } from './utilities';
+import { config, logger } from './utilities';
 
 dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 
@@ -21,7 +21,11 @@ export const bootstrapApplication = async (): Promise<express.Application> => {
     app.setConfig(middleware => {
         middleware.set('port', config.PORT);
 
-        middleware.use(express.static(path.join(__dirname, '../public')));
+        middleware.use('/images', express.static(path.join(__dirname, '../public/media/images')));
+        middleware.use('/styles', express.static(path.join(__dirname, '../public/styles')));
+
+        middleware.set('view engine', 'pug');
+        middleware.set('views', path.join(__dirname, 'views'));
 
         middleware.use(
             morgan('dev'),
@@ -44,6 +48,7 @@ export const bootstrapApplication = async (): Promise<express.Application> => {
             }),
             bodyParser.json(),
         );
+        logger('app').debug(path.join(__dirname, '../public/media/images'));
     });
 
     return app.build();
