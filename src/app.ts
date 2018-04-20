@@ -8,9 +8,7 @@ import { Container } from 'inversify';
 import { InversifyExpressServer } from 'inversify-express-utils';
 import * as morgan from 'morgan';
 import * as path from 'path';
-import './controllers/revision_controller';
 import { bindings } from './inversify.config';
-import { router } from './middleware/router';
 import { config } from './utilities';
 
 dotenv.config({ path: path.resolve(process.cwd(), '.env') });
