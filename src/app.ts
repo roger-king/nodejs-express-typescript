@@ -48,7 +48,10 @@ export const bootstrapApplication = async (): Promise<express.Application> => {
             }),
             bodyParser.json(),
         );
-        logger('app').debug(path.join(__dirname, '../public/media/images'));
+
+        middleware.use((req, res, next) => {
+            res.send('404 - Pug not found');
+        });
     });
 
     return app.build();
