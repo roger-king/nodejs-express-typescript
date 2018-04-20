@@ -16,12 +16,6 @@ import { logger } from './utilities/logger';
     server.on('error', onError);
     server.on('listening', () => {
         const msg = `Application is now running on http://localhost:${port}`;
-
-        if (!isLocal) {
-            // tslint:disable-next-line
-            console.log(msg);
-        }
-
         logger.info(msg);
     });
 

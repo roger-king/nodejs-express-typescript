@@ -1,9 +1,12 @@
+import * as fs from 'fs';
 import * as path from 'path';
-import { FileTransportOptions, Logger, LoggerInstance, LoggerOptions, transports } from 'winston';
+import { Stream } from 'stream';
+import { FileTransportOptions, Logger, LoggerInstance, LoggerOptions, stream, transports } from 'winston';
 import { config } from './config';
 
 const logLevel = config.LOG_LEVEL;
 const appRoot = path.join(__dirname, '../../');
+const logDir = path.join(appRoot, 'logs');
 const logOptions = {
     file: {
         level: logLevel,
@@ -21,6 +24,10 @@ const logOptions = {
         colorize: true,
     },
 };
+
+if (!fs.existsSync(logDir)) {
+    fs.mkdirSync(logDir);
+}
 
 export const logger: LoggerInstance = new Logger({
     transports: [new transports.File(logOptions.file), new transports.Console(logOptions.console)],
